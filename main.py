@@ -18,8 +18,11 @@ for filepath in filepaths:
     pdf.add_page()
     filename = Path(filepath).stem
     # print('filename',filename) # filename 10003-2023.1.18
-    bill_num = filename.split('-')[0]
+    bill_num, date = filename.split('-')
     # print('data_num', data_num) # data_num 10003
     pdf.set_font(family='Times', size=16, style='B')
-    pdf.cell(w=50, h=8, txt=f'bill_num. {bill_num}')
+    pdf.cell(w=50, h=8, txt=f'Bill_num. {bill_num}', ln=1)
+
+    pdf.set_font(family='Times', size=16, style='B')
+    pdf.cell(w=50, h=8, txt=f'Date. {date}')
     pdf.output(f"PDFs/{filename}.pdf")
